@@ -1,0 +1,213 @@
+{
+  "HW698": {
+    "appCode": "139c362d-9f40-4df5-a6d8-fcdff540b601",
+    "tenantId": "HW47",
+    "sandBoxId": null,
+    "objId": "HW698",
+    "objName": "t_object_9f06tf0g",
+    "objDesc": null,
+    "displayLabel": "【天猫】商品",
+    "fields": [
+      {
+        "id": "HW19302",
+        "name": "t_field_s7z61rv8",
+        "displayLabel": "商品名称",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW19301",
+        "name": "t_field_pu1w2950",
+        "displayLabel": "单位体积（m^3）",
+        "type": "DOUBLE",
+        "typeDesc": "浮点数",
+        "dataSource": null
+      },
+      {
+        "id": "HW17917",
+        "name": "t_field_avabv026",
+        "displayLabel": "零售价",
+        "type": "CURRENCYI18N",
+        "typeDesc": "货币",
+        "dataSource": null
+      },
+      {
+        "id": "HW17950",
+        "name": "t_field_a8hijbgb",
+        "displayLabel": "批发价",
+        "type": "CURRENCYI18N",
+        "typeDesc": "货币",
+        "dataSource": null
+      },
+      {
+        "id": "HW17916",
+        "name": "t_field_sz4f282p",
+        "displayLabel": "进货价",
+        "type": "CURRENCYI18N",
+        "typeDesc": "货币",
+        "dataSource": null
+      },
+      {
+        "id": "HW17949",
+        "name": "t_field_wo9345j0",
+        "displayLabel": "商品详细信息",
+        "type": "RICHTEXT",
+        "typeDesc": "富文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW17948",
+        "name": "t_field_i98ik104",
+        "displayLabel": "商品图片",
+        "type": "ENCLOSURE",
+        "typeDesc": "附件",
+        "dataSource": null
+      },
+      {
+        "id": "HW17947",
+        "name": "t_field_ef9rfdt8",
+        "displayLabel": "商品主图",
+        "type": "IMAGE_SINGLE",
+        "typeDesc": "图片",
+        "dataSource": null
+      },
+      {
+        "id": "HW17946",
+        "name": "t_field_ugqbsy19",
+        "displayLabel": "商品单位",
+        "type": "RADIO",
+        "typeDesc": "单选列表",
+        "dataSource": null
+      },
+      {
+        "id": "HW17945",
+        "name": "t_field_yib6tu48",
+        "displayLabel": "商品分类",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "HW692"
+      },
+      {
+        "id": "HW17943",
+        "name": "name",
+        "displayLabel": "商品编号",
+        "type": "AUTONUMBER",
+        "typeDesc": "自动编号",
+        "dataSource": null
+      },
+      {
+        "id": "HW19271",
+        "name": "id",
+        "displayLabel": "ID",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW19250",
+        "name": "enterpriseId",
+        "displayLabel": "企业",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "170"
+      },
+      {
+        "id": "HW17941",
+        "name": "responsibleUserId",
+        "displayLabel": "负责人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW17942",
+        "name": "responsibleDepartmentId",
+        "displayLabel": "负责人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW19274",
+        "name": "isDeleted",
+        "displayLabel": "删除状态",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW19276",
+        "name": "createUserId",
+        "displayLabel": "创建人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW19275",
+        "name": "companyId",
+        "displayLabel": "应用",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "80"
+      },
+      {
+        "id": "HW19278",
+        "name": "createDepartmentId",
+        "displayLabel": "创建人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW19272",
+        "name": "createdTime",
+        "displayLabel": "创建时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      },
+      {
+        "id": "HW19277",
+        "name": "modifyUserId",
+        "displayLabel": "修改人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW19279",
+        "name": "modifyDepartmentId",
+        "displayLabel": "修改人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW19280",
+        "name": "tenantId",
+        "displayLabel": "租户",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "83"
+      },
+      {
+        "id": "HW19273",
+        "name": "modifiedTime",
+        "displayLabel": "修改时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      },
+      {
+        "id": "HW17944",
+        "name": "subObjId",
+        "displayLabel": "子对象",
+        "type": "SUBOBJROUTE",
+        "typeDesc": "子对象路由",
+        "dataSource": null
+      }
+    ]
+  }
+}
