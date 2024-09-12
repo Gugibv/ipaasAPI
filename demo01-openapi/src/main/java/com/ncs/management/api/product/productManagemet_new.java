@@ -24,4 +24,3 @@ public class productManagemet_new {
         System.out.println(byIds.getData().get(0).getT_field_a8hijbgb());
     }
 }
-WWW
