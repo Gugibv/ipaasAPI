@@ -1,4 +1,4 @@
-package com.ncs.management.api.product;
+package grey.ncs.management.api.product;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
