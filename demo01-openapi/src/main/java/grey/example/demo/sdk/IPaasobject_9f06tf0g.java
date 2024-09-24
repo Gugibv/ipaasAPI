@@ -4,6 +4,9 @@ import com.clickpaas.ipaas.annotations.IPaasField;
 import com.clickpaas.ipaas.annotations.IPaasObject;
 import com.clickpaas.ipaas.model.BaseDefinition;
 
+/**
+ * 【天猫】商品
+ */
 @IPaasObject(objName = "t_object_9f06tf0g", appCode = "139c362d-9f40-4df5-a6d8-fcdff540b601", tenantId = "HW47")
 public class IPaasobject_9f06tf0g extends BaseDefinition {
     // 商品名称

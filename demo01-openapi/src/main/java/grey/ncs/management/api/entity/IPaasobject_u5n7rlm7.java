@@ -4,6 +4,9 @@ import com.clickpaas.ipaas.annotations.IPaasField;
 import com.clickpaas.ipaas.annotations.IPaasObject;
 import com.clickpaas.ipaas.model.BaseDefinition;
 
+/**
+ * 【京东】进货单
+ */
 @IPaasObject(objName = "t_object_u5n7rlm7", appCode = "5876fddf-ee7c-4289-985a-a1bd1a0c5627", tenantId = "HW47")
 public class IPaasobject_u5n7rlm7 extends BaseDefinition {
     // 审批额度分节点

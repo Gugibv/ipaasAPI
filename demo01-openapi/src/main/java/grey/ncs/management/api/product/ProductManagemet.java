@@ -2,6 +2,9 @@ package grey.ncs.management.api.product;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.clickpaas.ipaas.mapper.BaseMapper;
+import com.clickpaas.ipaas.model.DataResponse;
+import grey.example.demo.sdk.IPaasobject_9f06tf0g;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -11,14 +14,28 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class productManagemet {
+/**
+ * 【天猫】商品
+ */
+public class ProductManagemet {
     public static void main(String []args){
-        updateProductById() ;
+        findById();
+   //     updateProductById() ;
     }
+    public static String findById() {
+        BaseMapper<IPaasobject_9f06tf0g> baseMapper = new BaseMapper<IPaasobject_9f06tf0g>() {
+        };
 
+        DataResponse<List<IPaasobject_9f06tf0g>> byIds = baseMapper.findByIds(Arrays.asList("HW3132465"));
+        String name =  byIds.getData().get(0).getT_field_s7z61rv8().toString();
+        System.out.println(name);
+        return  name;
+    }
 
     public static void updateProductById(){
             CloseableHttpClient httpClient = HttpClients.createDefault();
