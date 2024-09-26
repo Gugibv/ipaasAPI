@@ -30,6 +30,10 @@
           <configPaths>${project.basedir}/src/main/resources/object.json</configPaths>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </build>
   <repositories>
@@ -45,6 +49,14 @@
       <url>http://maven.console.clickpaas.com/nexus/content/groups/public</url>
     </repository>
   </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.34</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
   <properties>
     <maven.compiler.target>17</maven.compiler.target>
     <maven.compiler.source>17</maven.compiler.source>
