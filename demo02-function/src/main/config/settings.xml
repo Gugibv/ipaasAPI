@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <!--
+    <localRepository>d:/repositories/bizcloud</localRepository>
+    -->
+    <pluginGroups>
+    </pluginGroups>
+    <proxies>
+    </proxies>
+    <servers>
+        <server>
+            <id>snapshots</id>
+            <username>reader2</username>
+            <password>reader7788</password>
+        </server>
+        <server>
+            <id>nexus</id>
+            <username>reader2</username>
+            <password>reader7788</password>
+        </server>
+        <server>
+            <id>releases</id>
+            <username>reader2</username>
+            <password>reader7788</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>sa</id>
+            <name>sa</name>
+            <url>http://maven.console.clickpaas.com/nexus/content/groups/public</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>saPublicProfile</id>
+            <repositories>
+                <repository>
+                    <id>nexus</id>
+                    <name>local private nexus</name>
+                    <url>http://maven.console.clickpaas.com/nexus/content/groups/public</url>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>nexus</id>
+                    <name>Maven China Mirror</name>
+                    <url>http://maven.console.clickpaas.com/nexus/content/groups/public</url>
+                </pluginRepository>
+            </pluginRepositories>
+
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>saPublicProfile</activeProfile>
+    </activeProfiles>
+
+</settings>
