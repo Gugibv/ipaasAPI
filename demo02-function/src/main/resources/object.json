@@ -1,0 +1,221 @@
+{
+  "HW1257": {
+    "appCode": "5876fddf-ee7c-4289-985a-a1bd1a0c5627",
+    "tenantId": "HW47",
+    "sandBoxId": null,
+    "objId": "HW1257",
+    "objName": "t_object_u5n7rlm7",
+    "objDesc": null,
+    "displayLabel": "【京东】进货单",
+    "fields": [
+      {
+        "id": "HW25246",
+        "name": "t_field_elrqd5g3",
+        "displayLabel": "审批额度分节点",
+        "type": "CURRENCYI18N",
+        "typeDesc": "货币",
+        "dataSource": null
+      },
+      {
+        "id": "HW25037",
+        "name": "t_field_nirt2pf6",
+        "displayLabel": "所属仓库",
+        "type": "MULTITOONE",
+        "typeDesc": "从主关联",
+        "dataSource": "HW1002"
+      },
+      {
+        "id": "HW22717",
+        "name": "t_field_ad471dje",
+        "displayLabel": "结算账户",
+        "type": "RADIO",
+        "typeDesc": "单选列表",
+        "dataSource": null
+      },
+      {
+        "id": "HW23265",
+        "name": "t_field_b8s53gmw",
+        "displayLabel": "本单欠款",
+        "type": "FORMULA",
+        "typeDesc": "公式",
+        "dataSource": null
+      },
+      {
+        "id": "HW23264",
+        "name": "t_field_lf4iocfo",
+        "displayLabel": "实付金额",
+        "type": "CURRENCYI18N",
+        "typeDesc": "货币",
+        "dataSource": null
+      },
+      {
+        "id": "HW23237",
+        "name": "t_field_ffuspdea",
+        "displayLabel": "商品总额",
+        "type": "COLLECT",
+        "typeDesc": "汇总",
+        "dataSource": null
+      },
+      {
+        "id": "HW23236",
+        "name": "t_field_n15shaux",
+        "displayLabel": "备注",
+        "type": "TEXTAREA",
+        "typeDesc": "多行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW23235",
+        "name": "t_field_9s0wetyu",
+        "displayLabel": "货物总体积（m^3）",
+        "type": "COLLECT",
+        "typeDesc": "汇总",
+        "dataSource": null
+      },
+      {
+        "id": "HW24026",
+        "name": "t_field_ffsc77i5",
+        "displayLabel": "入库仓库",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "HW1002"
+      },
+      {
+        "id": "HW24025",
+        "name": "t_field_x3ls8jfg",
+        "displayLabel": "进货供应商",
+        "type": "MULTITOONE",
+        "typeDesc": "从主关联",
+        "dataSource": "HW1003"
+      },
+      {
+        "id": "HW24024",
+        "name": "t_field_ha0k9qb7",
+        "displayLabel": "单据编号",
+        "type": "AUTONUMBER",
+        "typeDesc": "自动编号",
+        "dataSource": null
+      },
+      {
+        "id": "HW22536",
+        "name": "name",
+        "displayLabel": "名称",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW22504",
+        "name": "id",
+        "displayLabel": "ID",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW22503",
+        "name": "enterpriseId",
+        "displayLabel": "企业",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "170"
+      },
+      {
+        "id": "HW22534",
+        "name": "responsibleUserId",
+        "displayLabel": "负责人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW22535",
+        "name": "responsibleDepartmentId",
+        "displayLabel": "负责人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW22507",
+        "name": "isDeleted",
+        "displayLabel": "删除状态",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW22509",
+        "name": "createUserId",
+        "displayLabel": "创建人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW22508",
+        "name": "companyId",
+        "displayLabel": "应用",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "80"
+      },
+      {
+        "id": "HW22531",
+        "name": "createDepartmentId",
+        "displayLabel": "创建人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW22505",
+        "name": "createdTime",
+        "displayLabel": "创建时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      },
+      {
+        "id": "HW22510",
+        "name": "modifyUserId",
+        "displayLabel": "修改人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW22532",
+        "name": "modifyDepartmentId",
+        "displayLabel": "修改人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW22533",
+        "name": "tenantId",
+        "displayLabel": "租户",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "83"
+      },
+      {
+        "id": "HW22506",
+        "name": "modifiedTime",
+        "displayLabel": "修改时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      },
+      {
+        "id": "HW22537",
+        "name": "subObjId",
+        "displayLabel": "子对象",
+        "type": "SUBOBJROUTE",
+        "typeDesc": "子对象路由",
+        "dataSource": null
+      }
+    ]
+  }
+}

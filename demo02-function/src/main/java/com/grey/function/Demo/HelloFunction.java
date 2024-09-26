@@ -1,4 +1,4 @@
-package com.grey.function;
+package com.grey.function.Demo;
 import com.clickpaas.ipaas.function.core.FunctionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

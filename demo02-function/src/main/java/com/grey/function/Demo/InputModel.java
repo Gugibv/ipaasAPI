@@ -1,4 +1,4 @@
-package com.grey.function;
+package com.grey.function.Demo;
 
 public class InputModel {
 
