@@ -17,13 +17,17 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
 
 
 public class PurchaseOrderApicall {
     public static void main(String[] args) {
+
+        String ID = "HW6954990"; //进货单ID
    //     findById();
-             test();
+       String warehouseId =  getWarehouseIdByPurchaseOrderId(ID);
+        getGoodsListByPurchaseOrderId(ID);
 /*
         findFilterBox();
         saveOrUpdate();
@@ -38,19 +42,28 @@ public class PurchaseOrderApicall {
 
     }
 
-    public static String findById() {
-        String ID = "HW6954990"; //进货单ID
+    /**
+     * 根据进货单ID获取入库仓库
+     * @param ID
+     * @return
+     */
+    public static String getWarehouseIdByPurchaseOrderId(String ID) {
+
         BaseMapper<IPaasobject_u5n7rlm7> baseMapper = new BaseMapper<IPaasobject_u5n7rlm7>() {};
         DataResponse<List<IPaasobject_u5n7rlm7>> byIds = baseMapper.findByIds(Arrays.asList(ID));
 
-         byIds.getData().get(0).getT_field_ffsc77i5();
+        byIds.getData().get(0).getT_field_ffsc77i5();
         System.out.println(byIds.getData().get(0).getT_field_ffsc77i5());
         return  null;
 
     }
 
-    public static  void test() {
-        String ID = "HW6954990"; //进货单ID
+    /**
+     * 根据进货单ID获取商品列表
+     * @param ID
+     */
+    public static  void getGoodsListByPurchaseOrderId(String ID) {
+
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
@@ -67,16 +80,16 @@ public class PurchaseOrderApicall {
         Map<String, Object> bodyMapR01 = new HashMap<>();
         bodyMapR01.put("query", queryR01);
 
-        Map<String, Object> $specialCommandR01 = new HashMap<>();
-        $specialCommandR01.put("$respFields", JSON.toJSONString(Arrays.asList("t_field_jiflrh7rhc")));//  商品 ID
+        Map<String, Object> $specialCommandR02 = new HashMap<>();
+        $specialCommandR02.put("$respFields", JSON.toJSONString(Arrays.asList("t_field_jiflrh7rhc", "t_field_uxggln4z")));
 
 
         Map<String, Object> $extendFieldsR01 = new HashMap<>();
-        $specialCommandR01.put("$extendFields", JSON.toJSONString($extendFieldsR01));
+        $specialCommandR02.put("$extendFields", JSON.toJSONString($extendFieldsR01));
 
-        $specialCommandR01.put("$pageNum", 1);
-        $specialCommandR01.put("$pageSize", 15);
-        bodyMapR01.put("$specialCommand", $specialCommandR01);
+        $specialCommandR02.put("$pageNum", 1);
+        $specialCommandR02.put("$pageSize", 15);
+        bodyMapR01.put("$specialCommand", $specialCommandR02);
 
         HttpPost requestR01 = new HttpPost(findPage);
         requestR01.setEntity(new StringEntity(JSON.toJSONString(bodyMapR01), "UTF-8"));
@@ -103,8 +116,9 @@ public class PurchaseOrderApicall {
 
                     // 获取 t_field_jiflrh7rhc 的值
                     if (item.has("t_field_jiflrh7rhc")) {
-                        String value = item.getString("t_field_jiflrh7rhc");
-                        System.out.println("商品ID: " + value);
+                        String productId = item.getString("t_field_jiflrh7rhc");
+                        BigDecimal productNum = item.getBigDecimal("t_field_uxggln4z");
+                        System.out.println("商品ID: " + productId +" 进货数量：" +productNum );
                     } else {
                         System.out.println("t_field_jiflrh7rhc 字段不存在");
                     }
