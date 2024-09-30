@@ -1,4 +1,338 @@
 {
+  "HW1006": {
+    "appCode": "5876fddf-ee7c-4289-985a-a1bd1a0c5627",
+    "tenantId": "HW47",
+    "sandBoxId": null,
+    "objId": "HW1006",
+    "objName": "t_object_x7x3163y",
+    "objDesc": null,
+    "displayLabel": "【京东】商品-进货单",
+    "fields": [
+      {
+        "id": "HW23262",
+        "name": "t_field_dgimvat9",
+        "displayLabel": "商品总体积（m^3）",
+        "type": "FORMULA",
+        "typeDesc": "公式",
+        "dataSource": null
+      },
+      {
+        "id": "HW23234",
+        "name": "t_field_2rfxbt28",
+        "displayLabel": "商品总价",
+        "type": "FORMULA",
+        "typeDesc": "公式",
+        "dataSource": null
+      },
+      {
+        "id": "HW23261",
+        "name": "t_field_t0jzvgdpxv",
+        "displayLabel": "进货价",
+        "type": "CURRENCYI18N",
+        "typeDesc": "货币",
+        "dataSource": null
+      },
+      {
+        "id": "HW22539",
+        "name": "t_field_uxggln4z",
+        "displayLabel": "进货数量",
+        "type": "INT",
+        "typeDesc": "整数",
+        "dataSource": null
+      },
+      {
+        "id": "HW23233",
+        "name": "t_field_nro7nf8s",
+        "displayLabel": "折扣",
+        "type": "PERCENTAGE",
+        "typeDesc": "百分比",
+        "dataSource": null
+      },
+      {
+        "id": "HW23232",
+        "name": "t_field_jx3jrvapjv",
+        "displayLabel": "单位体积（m^3）",
+        "type": "DOUBLE",
+        "typeDesc": "浮点数",
+        "dataSource": null
+      },
+      {
+        "id": "HW23231",
+        "name": "t_field_smdqjgddnc",
+        "displayLabel": "关联进货单",
+        "type": "MULTITOONE",
+        "typeDesc": "从主关联",
+        "dataSource": "HW1257"
+      },
+      {
+        "id": "HW24060",
+        "name": "t_field_jiflrh7rhc",
+        "displayLabel": "关联【京东】商品",
+        "type": "MULTITOONE",
+        "typeDesc": "从主关联",
+        "dataSource": "HW980"
+      },
+      {
+        "id": "HW24028",
+        "name": "id",
+        "displayLabel": "ID",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW24027",
+        "name": "enterpriseId",
+        "displayLabel": "企业",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "170"
+      },
+      {
+        "id": "HW24058",
+        "name": "responsibleUserId",
+        "displayLabel": "负责人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW24059",
+        "name": "responsibleDepartmentId",
+        "displayLabel": "负责人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW24051",
+        "name": "isDeleted",
+        "displayLabel": "删除状态",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW24053",
+        "name": "createUserId",
+        "displayLabel": "创建人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW24052",
+        "name": "companyId",
+        "displayLabel": "应用",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "80"
+      },
+      {
+        "id": "HW24055",
+        "name": "createDepartmentId",
+        "displayLabel": "创建人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW24029",
+        "name": "createdTime",
+        "displayLabel": "创建时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      },
+      {
+        "id": "HW24054",
+        "name": "modifyUserId",
+        "displayLabel": "修改人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW24056",
+        "name": "modifyDepartmentId",
+        "displayLabel": "修改人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW24057",
+        "name": "tenantId",
+        "displayLabel": "租户",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "83"
+      },
+      {
+        "id": "HW24030",
+        "name": "modifiedTime",
+        "displayLabel": "修改时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      }
+    ]
+  },
+  "HW1311": {
+    "appCode": "5876fddf-ee7c-4289-985a-a1bd1a0c5627",
+    "tenantId": "HW47",
+    "sandBoxId": null,
+    "objId": "HW1311",
+    "objName": "t_object_y7w6twi0",
+    "objDesc": null,
+    "displayLabel": "【京东】商品-仓库",
+    "fields": [
+      {
+        "id": "HW23652",
+        "name": "t_sumnumber",
+        "displayLabel": "占用空间",
+        "type": "FORMULA",
+        "typeDesc": "公式",
+        "dataSource": null
+      },
+      {
+        "id": "HW24179",
+        "name": "t_number",
+        "displayLabel": "库存数量",
+        "type": "INT",
+        "typeDesc": "整数",
+        "dataSource": null
+      },
+      {
+        "id": "HW24176",
+        "name": "t_item_name",
+        "displayLabel": "关联【京东】商品",
+        "type": "MULTITOONE",
+        "typeDesc": "从主关联",
+        "dataSource": "HW980"
+      },
+      {
+        "id": "HW24177",
+        "name": "t_treewarehouse",
+        "displayLabel": "关联【京东】仓库",
+        "type": "MULTITOONE",
+        "typeDesc": "从主关联",
+        "dataSource": "HW1002"
+      },
+      {
+        "id": "HW24178",
+        "name": "t_field_mtcfzpugav",
+        "displayLabel": "单位体积（m^3）",
+        "type": "DOUBLE",
+        "typeDesc": "浮点数",
+        "dataSource": null
+      },
+      {
+        "id": "HW23564",
+        "name": "id",
+        "displayLabel": "ID",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW23563",
+        "name": "enterpriseId",
+        "displayLabel": "企业",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "170"
+      },
+      {
+        "id": "HW24174",
+        "name": "responsibleUserId",
+        "displayLabel": "负责人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW24175",
+        "name": "responsibleDepartmentId",
+        "displayLabel": "负责人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW23567",
+        "name": "isDeleted",
+        "displayLabel": "删除状态",
+        "type": "TEXT",
+        "typeDesc": "单行文本",
+        "dataSource": null
+      },
+      {
+        "id": "HW23569",
+        "name": "createUserId",
+        "displayLabel": "创建人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW23568",
+        "name": "companyId",
+        "displayLabel": "应用",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "80"
+      },
+      {
+        "id": "HW24171",
+        "name": "createDepartmentId",
+        "displayLabel": "创建人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW23565",
+        "name": "createdTime",
+        "displayLabel": "创建时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      },
+      {
+        "id": "HW23570",
+        "name": "modifyUserId",
+        "displayLabel": "修改人",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "82"
+      },
+      {
+        "id": "HW24172",
+        "name": "modifyDepartmentId",
+        "displayLabel": "修改人部门",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "81"
+      },
+      {
+        "id": "HW24173",
+        "name": "tenantId",
+        "displayLabel": "租户",
+        "type": "IDRELATIONSHIP",
+        "typeDesc": "字段引用",
+        "dataSource": "83"
+      },
+      {
+        "id": "HW23566",
+        "name": "modifiedTime",
+        "displayLabel": "修改时间",
+        "type": "TIMESTAMP",
+        "typeDesc": "日期时间",
+        "dataSource": null
+      }
+    ]
+  },
   "HW1257": {
     "appCode": "5876fddf-ee7c-4289-985a-a1bd1a0c5627",
     "tenantId": "HW47",

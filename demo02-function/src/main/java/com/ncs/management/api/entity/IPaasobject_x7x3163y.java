@@ -2,52 +2,41 @@ package com.ncs.management.api.entity;
 
 import com.clickpaas.ipaas.annotations.IPaasField;
 import com.clickpaas.ipaas.annotations.IPaasObject;
+import com.clickpaas.ipaas.annotations.IPaasOneToOne;
 import com.clickpaas.ipaas.model.BaseDefinition;
 
 /**
- * 进货单
+ * 商品-进货单中间表
  */
-@IPaasObject(objName = "t_object_u5n7rlm7", appCode = "5876fddf-ee7c-4289-985a-a1bd1a0c5627", tenantId = "HW47")
-public class IPaasobject_u5n7rlm7 extends BaseDefinition {
-    // 审批额度分节点
+@IPaasObject(objName = "t_object_x7x3163y", appCode = "5876fddf-ee7c-4289-985a-a1bd1a0c5627", tenantId = "HW47")
+public class IPaasobject_x7x3163y extends BaseDefinition {
+    // 商品总体积（m^3）
     @IPaasField
-    private Object t_field_elrqd5g3;
-    // 所属仓库
+    private String t_field_dgimvat9;
+    // 商品总价
     @IPaasField
-    private Object t_field_nirt2pf6;
-    private Object t_field_nirt2pf6Obj;
-    // 结算账户
+    private String t_field_2rfxbt28;
+    // 进货价
     @IPaasField
-    private Object t_field_ad471dje;
-    // 本单欠款
+    private Object t_field_t0jzvgdpxv;
+    // 进货数量
     @IPaasField
-    private String t_field_b8s53gmw;
-    // 实付金额
+    private Integer t_field_uxggln4z;
+    // 折扣
     @IPaasField
-    private Object t_field_lf4iocfo;
-    // 商品总额
+    private Double t_field_nro7nf8s;
+    // 单位体积（m^3）
     @IPaasField
-    private String t_field_ffuspdea;
-    // 备注
+    private Double t_field_jx3jrvapjv;
+    // 关联进货单
     @IPaasField
-    private String t_field_n15shaux;
-    // 货物总体积（m^3）
+    private Object t_field_smdqjgddnc;
+    @IPaasOneToOne(relationField = "t_field_smdqjgddnc", ignore = false)
+    private IPaasobject_u5n7rlm7 t_field_smdqjgddncObj;
+    // 关联【京东】商品
     @IPaasField
-    private String t_field_9s0wetyu;
-    // 入库仓库
-    @IPaasField
-    private Object t_field_ffsc77i5;
-    private Object t_field_ffsc77i5Obj;
-    // 进货供应商
-    @IPaasField
-    private Object t_field_x3ls8jfg;
-    private Object t_field_x3ls8jfgObj;
-    // 单据编号
-    @IPaasField
-    private String t_field_ha0k9qb7;
-    // 名称
-    @IPaasField
-    private String name;
+    private Object t_field_jiflrh7rhc;
+    private Object t_field_jiflrh7rhcObj;
     // ID
     @IPaasField
     private String id;
@@ -96,128 +85,85 @@ public class IPaasobject_u5n7rlm7 extends BaseDefinition {
     // 修改时间
     @IPaasField
     private String modifiedTime;
-    // 子对象
-    @IPaasField
-    private String subObjId;
 
-    public Object getT_field_elrqd5g3() {
-        return this.t_field_elrqd5g3;
+    public String getT_field_dgimvat9() {
+        return this.t_field_dgimvat9;
     }
 
-    public void setT_field_elrqd5g3(Object t_field_elrqd5g3) {
-        this.t_field_elrqd5g3 = t_field_elrqd5g3;
+    public void setT_field_dgimvat9(String t_field_dgimvat9) {
+        this.t_field_dgimvat9 = t_field_dgimvat9;
     }
 
-    public Object getT_field_nirt2pf6() {
-        return this.t_field_nirt2pf6;
+    public String getT_field_2rfxbt28() {
+        return this.t_field_2rfxbt28;
     }
 
-    public void setT_field_nirt2pf6(Object t_field_nirt2pf6) {
-        this.t_field_nirt2pf6 = t_field_nirt2pf6;
+    public void setT_field_2rfxbt28(String t_field_2rfxbt28) {
+        this.t_field_2rfxbt28 = t_field_2rfxbt28;
     }
 
-    public Object getT_field_nirt2pf6Obj() {
-        return this.t_field_nirt2pf6Obj;
+    public Object getT_field_t0jzvgdpxv() {
+        return this.t_field_t0jzvgdpxv;
     }
 
-    public void setT_field_nirt2pf6Obj(Object t_field_nirt2pf6Obj) {
-        this.t_field_nirt2pf6Obj = t_field_nirt2pf6Obj;
+    public void setT_field_t0jzvgdpxv(Object t_field_t0jzvgdpxv) {
+        this.t_field_t0jzvgdpxv = t_field_t0jzvgdpxv;
     }
 
-    public Object getT_field_ad471dje() {
-        return this.t_field_ad471dje;
+    public Integer getT_field_uxggln4z() {
+        return this.t_field_uxggln4z;
     }
 
-    public void setT_field_ad471dje(Object t_field_ad471dje) {
-        this.t_field_ad471dje = t_field_ad471dje;
+    public void setT_field_uxggln4z(Integer t_field_uxggln4z) {
+        this.t_field_uxggln4z = t_field_uxggln4z;
     }
 
-    public String getT_field_b8s53gmw() {
-        return this.t_field_b8s53gmw;
+    public Double getT_field_nro7nf8s() {
+        return this.t_field_nro7nf8s;
     }
 
-    public void setT_field_b8s53gmw(String t_field_b8s53gmw) {
-        this.t_field_b8s53gmw = t_field_b8s53gmw;
+    public void setT_field_nro7nf8s(Double t_field_nro7nf8s) {
+        this.t_field_nro7nf8s = t_field_nro7nf8s;
     }
 
-    public Object getT_field_lf4iocfo() {
-        return this.t_field_lf4iocfo;
+    public Double getT_field_jx3jrvapjv() {
+        return this.t_field_jx3jrvapjv;
     }
 
-    public void setT_field_lf4iocfo(Object t_field_lf4iocfo) {
-        this.t_field_lf4iocfo = t_field_lf4iocfo;
+    public void setT_field_jx3jrvapjv(Double t_field_jx3jrvapjv) {
+        this.t_field_jx3jrvapjv = t_field_jx3jrvapjv;
     }
 
-    public String getT_field_ffuspdea() {
-        return this.t_field_ffuspdea;
+    public Object getT_field_smdqjgddnc() {
+        return this.t_field_smdqjgddnc;
     }
 
-    public void setT_field_ffuspdea(String t_field_ffuspdea) {
-        this.t_field_ffuspdea = t_field_ffuspdea;
+    public void setT_field_smdqjgddnc(Object t_field_smdqjgddnc) {
+        this.t_field_smdqjgddnc = t_field_smdqjgddnc;
     }
 
-    public String getT_field_n15shaux() {
-        return this.t_field_n15shaux;
+    public IPaasobject_u5n7rlm7 getT_field_smdqjgddncObj() {
+        return this.t_field_smdqjgddncObj;
     }
 
-    public void setT_field_n15shaux(String t_field_n15shaux) {
-        this.t_field_n15shaux = t_field_n15shaux;
+    public void setT_field_smdqjgddncObj(IPaasobject_u5n7rlm7 t_field_smdqjgddncObj) {
+        this.t_field_smdqjgddncObj = t_field_smdqjgddncObj;
     }
 
-    public String getT_field_9s0wetyu() {
-        return this.t_field_9s0wetyu;
+    public Object getT_field_jiflrh7rhc() {
+        return this.t_field_jiflrh7rhc;
     }
 
-    public void setT_field_9s0wetyu(String t_field_9s0wetyu) {
-        this.t_field_9s0wetyu = t_field_9s0wetyu;
+    public void setT_field_jiflrh7rhc(Object t_field_jiflrh7rhc) {
+        this.t_field_jiflrh7rhc = t_field_jiflrh7rhc;
     }
 
-    public Object getT_field_ffsc77i5() {
-        return this.t_field_ffsc77i5;
+    public Object getT_field_jiflrh7rhcObj() {
+        return this.t_field_jiflrh7rhcObj;
     }
 
-    public void setT_field_ffsc77i5(Object t_field_ffsc77i5) {
-        this.t_field_ffsc77i5 = t_field_ffsc77i5;
-    }
-
-    public Object getT_field_ffsc77i5Obj() {
-        return this.t_field_ffsc77i5Obj;
-    }
-
-    public void setT_field_ffsc77i5Obj(Object t_field_ffsc77i5Obj) {
-        this.t_field_ffsc77i5Obj = t_field_ffsc77i5Obj;
-    }
-
-    public Object getT_field_x3ls8jfg() {
-        return this.t_field_x3ls8jfg;
-    }
-
-    public void setT_field_x3ls8jfg(Object t_field_x3ls8jfg) {
-        this.t_field_x3ls8jfg = t_field_x3ls8jfg;
-    }
-
-    public Object getT_field_x3ls8jfgObj() {
-        return this.t_field_x3ls8jfgObj;
-    }
-
-    public void setT_field_x3ls8jfgObj(Object t_field_x3ls8jfgObj) {
-        this.t_field_x3ls8jfgObj = t_field_x3ls8jfgObj;
-    }
-
-    public String getT_field_ha0k9qb7() {
-        return this.t_field_ha0k9qb7;
-    }
-
-    public void setT_field_ha0k9qb7(String t_field_ha0k9qb7) {
-        this.t_field_ha0k9qb7 = t_field_ha0k9qb7;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setT_field_jiflrh7rhcObj(Object t_field_jiflrh7rhcObj) {
+        this.t_field_jiflrh7rhcObj = t_field_jiflrh7rhcObj;
     }
 
     public String getId() {
@@ -394,13 +340,5 @@ public class IPaasobject_u5n7rlm7 extends BaseDefinition {
 
     public void setModifiedTime(String modifiedTime) {
         this.modifiedTime = modifiedTime;
-    }
-
-    public String getSubObjId() {
-        return this.subObjId;
-    }
-
-    public void setSubObjId(String subObjId) {
-        this.subObjId = subObjId;
     }
 }
