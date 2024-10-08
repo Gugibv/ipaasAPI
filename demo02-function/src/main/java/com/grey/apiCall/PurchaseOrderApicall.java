@@ -26,12 +26,12 @@ public class PurchaseOrderApicall {
 
         String ID = "HW6954990"; //进货单ID
 
-        String warehouseId =  getWarehouseIdByPurchaseOrderId(ID);
-        String goodsInPurchaseOrderString = getGoodsListByPurchaseOrderId(ID);
-        String goodsInWarehoseString = getGoodListByWarehouseId(warehouseId);
+        String warehouseId =  getWarehouseIdByPurchaseOrderId(ID); // 从进货单中得到相关仓库ID
+        String goodsInPurchaseOrderString = getGoodsListByPurchaseOrderId(ID); // 根据进货单ID从商品-进货单中间表获取商品列表
+        String goodsInWarehoseString = getGoodListByWarehouseId(warehouseId); // 根据相关仓库ID从商品-仓库中间表获取商品列表
         handleGoodsToWarehouse(goodsInPurchaseOrderString,goodsInWarehoseString); // 商品入库
 
-
+        updateGoodsToWarehouse();
     }
 
     /**
@@ -49,7 +49,7 @@ public class PurchaseOrderApicall {
     }
 
     /**
-     * 根据进货单ID获取商品列表
+     * 根据进货单ID从商品-进货单中间表获取商品列表
      * @param ID
      */
     public static String getGoodsListByPurchaseOrderId(String ID) {
@@ -104,7 +104,7 @@ public class PurchaseOrderApicall {
     }
 
     /**
-     * 根据仓库ID获取库存商品ID
+     * 根据相关仓库ID从商品-仓库中间表获取商品列表
      * @param warehouseId
      * @return
      */
@@ -209,7 +209,63 @@ public class PurchaseOrderApicall {
     }
 
 
-    public void updateGoodsToWarehouse(){
+    public static void updateGoodsToWarehouse(){
 
+        System.out.println("开始操作库存数量。。。。。。。。");
+        String ID ="HW6518361";//  入库仓库ID
+
+        String t_number = "2";//库存数量
+        String t_item_name ="HW6190950";// 关联京东商品
+        String t_treewarehouse = ID;
+        String t_sumnumber ="";// 占用空间
+        String t_field_mtcfzpugav ="";// 单位体积
+
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+
+        // 兑换token
+        String ipaasAccessToken = IpaasAccessToken.getToken(httpClient);
+
+
+        // 根据ID新增或更新数据(直接入库)
+        String saveOrUpdateOneBatchDirect = "https://apaas-openapi-web.clickpaas.com/api/open/v3/t_object_y7w6twi0/saveOrUpdateBatch/direct";
+
+        // 构建请求体(批量新增/更新)
+        List<Map<String, Object>> saveOrUpdateDataListW04 = new ArrayList<>();
+        Map<String, Object> saveOrUpdateDataW04 = new HashMap<>();
+
+        // 构建查询条件
+        Map<String, Object> queryW04 = new HashMap<>();
+        queryW04.put("id", "$placeholder");
+
+        // 构建更新条件
+        Map<String, Object> updateW04 = new HashMap<>();
+        updateW04.put("t_number", t_number);
+        updateW04.put("t_item_name", t_item_name);
+        updateW04.put("t_treewarehouse", t_treewarehouse);
+
+        saveOrUpdateDataW04.put("query", queryW04);
+        saveOrUpdateDataW04.put("update", updateW04);
+        saveOrUpdateDataListW04.add(saveOrUpdateDataW04);
+
+        Map<String, Object> bodyMapW04 = new HashMap<>();
+        bodyMapW04.put("payload", saveOrUpdateDataListW04);
+
+        HttpPost requestW04 = new HttpPost(saveOrUpdateOneBatchDirect);
+        requestW04.setEntity(new StringEntity(JSON.toJSONString(bodyMapW04), "UTF-8"));
+        requestW04.setHeader("Content-Type", "application/json");
+        requestW04.setHeader("Ipaas-Access-Token", ipaasAccessToken);
+        requestW04.setHeader("sandBoxId", "");
+
+        try {
+            CloseableHttpResponse respW04 = httpClient.execute(requestW04);
+            HttpEntity entityW04 = respW04.getEntity();
+            if (entityW04 != null) {
+                String resultW04 = EntityUtils.toString(entityW04);
+                EntityUtils.consume(respW04.getEntity());
+                System.out.println(resultW04);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
