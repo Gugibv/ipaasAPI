@@ -31,7 +31,12 @@ public class PurchaseOrderApicall {
         String goodsInWarehoseString = getGoodListByWarehouseId(warehouseId); // 根据相关仓库ID从商品-仓库中间表获取商品列表
         handleGoodsToWarehouse(goodsInPurchaseOrderString,goodsInWarehoseString); // 商品入库
 
-        updateGoodsToWarehouse();
+        warehouseId ="HW6518361";//  入库仓库ID
+        String t_item_name ="HW6190950";// 关联京东商品
+        int t_number = 4;//库存数量
+        String unitVolume ="0.5";// 单位体积
+
+        updateGoodsToWarehouse(warehouseId,t_item_name,t_number,unitVolume);
     }
 
     /**
@@ -209,16 +214,11 @@ public class PurchaseOrderApicall {
     }
 
 
-    public static void updateGoodsToWarehouse(){
+    public static void updateGoodsToWarehouse(String warehouseId,String t_item_name,int t_number,String unitVolume ){
 
         System.out.println("开始操作库存数量。。。。。。。。");
-        String ID ="HW6518361";//  入库仓库ID
 
-        String t_item_name ="HW6190950";// 关联京东商品
-        int t_number = 1;//库存数量
-        String t_sumnumber ="";// 占用空间
-        String t_field_mtcfzpugav ="";// 单位体积
-
+        String t_sumnumber =new BigDecimal(unitVolume).multiply(BigDecimal.valueOf(t_number)).toString();// 占用空间
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
         // 兑换token
@@ -233,17 +233,16 @@ public class PurchaseOrderApicall {
 
         // 构建查询条件
         Map<String, Object> queryW04 = new HashMap<>();
-        queryW04.put("t_treewarehouse", ID); // 入库仓库ID
+        queryW04.put("t_treewarehouse", warehouseId); // 入库仓库ID
         queryW04.put("t_item_name", t_item_name);
 
         // 构建更新条件
         Map<String, Object> updateW04 = new HashMap<>();
         updateW04.put("t_item_name", t_item_name);
-        updateW04.put("t_treewarehouse",ID);
+        updateW04.put("t_treewarehouse",warehouseId);
         updateW04.put("t_number", t_number);
-       // updateW04.put("t_sumnumber", "$placeholder");
-       //  updateW04.put("t_field_mtcfzpugav", "$placeholder");
-    //    updateW04.put("id",ID);
+        updateW04.put("t_sumnumber", t_sumnumber);
+        updateW04.put("t_field_mtcfzpugav", unitVolume);
 
         saveOrUpdateDataW04.put("query", queryW04);
         saveOrUpdateDataW04.put("update", updateW04);
