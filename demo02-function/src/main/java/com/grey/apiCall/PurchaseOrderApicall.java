@@ -214,9 +214,8 @@ public class PurchaseOrderApicall {
         System.out.println("开始操作库存数量。。。。。。。。");
         String ID ="HW6518361";//  入库仓库ID
 
-        String t_number = "2";//库存数量
         String t_item_name ="HW6190950";// 关联京东商品
-        String t_treewarehouse = ID;
+        int t_number = 1;//库存数量
         String t_sumnumber ="";// 占用空间
         String t_field_mtcfzpugav ="";// 单位体积
 
@@ -224,7 +223,6 @@ public class PurchaseOrderApicall {
 
         // 兑换token
         String ipaasAccessToken = IpaasAccessToken.getToken(httpClient);
-
 
         // 根据ID新增或更新数据(直接入库)
         String saveOrUpdateOneBatchDirect = "https://apaas-openapi-web.clickpaas.com/api/open/v3/t_object_y7w6twi0/saveOrUpdateBatch/direct";
@@ -235,13 +233,17 @@ public class PurchaseOrderApicall {
 
         // 构建查询条件
         Map<String, Object> queryW04 = new HashMap<>();
-        queryW04.put("id", "$placeholder");
+        queryW04.put("t_treewarehouse", ID); // 入库仓库ID
+        queryW04.put("t_item_name", t_item_name);
 
         // 构建更新条件
         Map<String, Object> updateW04 = new HashMap<>();
-        updateW04.put("t_number", t_number);
         updateW04.put("t_item_name", t_item_name);
-        updateW04.put("t_treewarehouse", t_treewarehouse);
+        updateW04.put("t_treewarehouse",ID);
+        updateW04.put("t_number", t_number);
+       // updateW04.put("t_sumnumber", "$placeholder");
+       //  updateW04.put("t_field_mtcfzpugav", "$placeholder");
+    //    updateW04.put("id",ID);
 
         saveOrUpdateDataW04.put("query", queryW04);
         saveOrUpdateDataW04.put("update", updateW04);
