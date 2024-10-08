@@ -29,8 +29,7 @@ public class PurchaseOrderApicall {
         String warehouseId =  getWarehouseIdByPurchaseOrderId(ID);
         String goodsInPurchaseOrderString = getGoodsListByPurchaseOrderId(ID);
         String goodsInWarehoseString = getGoodListByWarehouseId(warehouseId);
-        HashSet<String> goodInWareHouseSet = checkGoodsIfInWarehouse(goodsInPurchaseOrderString,goodsInWarehoseString);
-
+        handleGoodsToWarehouse(goodsInPurchaseOrderString,goodsInWarehoseString); // 商品入库
 
 
     }
@@ -160,29 +159,31 @@ public class PurchaseOrderApicall {
     }
 
 
-    public static HashSet<String> checkGoodsIfInWarehouse(String goodsInPurchaseOrderString ,String goodsInWarehoseString ){
-
-        HashSet<String> goodInWareHouseSet = new HashSet<>();
+    public static void handleGoodsToWarehouse(String goodsInPurchaseOrderString ,String goodsInWarehoseString ){
 
         JSONObject jsonObject = new JSONObject(goodsInPurchaseOrderString);
         JSONObject dataObject = jsonObject.getJSONObject("data");
         JSONArray dataList = dataObject.getJSONArray("dataList");
 
+        HashMap<String,BigDecimal> goodsInpurchaseMap = new HashMap<>();
         for(int i= 0;i<dataList.length();i++){
              JSONObject  item = (JSONObject) dataList.get(i);
-
-            // 获取 t_field_jiflrh7rhc 的值
             if (item.has("t_field_jiflrh7rhc")) {
                 String productId = item.getString("t_field_jiflrh7rhc");
                 BigDecimal productNum = item.getBigDecimal("t_field_uxggln4z");
+                if(goodsInpurchaseMap.containsKey(productId)){
+                    goodsInpurchaseMap.put(productId,goodsInpurchaseMap.get(productId).add(productNum));
+                }else{
+                    goodsInpurchaseMap.put(productId, productNum);
+                }
                 System.out.println("进货商品ID: " + productId +" 进货数量：" +productNum );
             } else {
                 System.out.println("t_field_jiflrh7rhc 字段不存在");
             }
         }
-
         System.out.println("----------------------------------");
 
+        HashMap<String,BigDecimal> goodsInWarehouse = new HashMap<>();
         JSONObject jsonObject2 = new JSONObject(goodsInWarehoseString);
         JSONObject dataObject2 = jsonObject2.getJSONObject("data");
         JSONArray dataList2 = dataObject2.getJSONArray("dataList");
@@ -191,16 +192,24 @@ public class PurchaseOrderApicall {
             if (item.has("t_item_name")) {
                 String productId = item.getString("t_item_name");
                 BigDecimal productNum = item.getBigDecimal("t_number");
+                goodsInWarehouse.put(productId,productNum);
                 System.out.println("库存商品ID: " + productId +" 库存数量：" +productNum );
             } else {
                 System.out.println("t_item_name 字段不存在");
             }
         }
 
+        for(String key: goodsInpurchaseMap.keySet()){
+            if(goodsInWarehouse.containsKey(key)){ // 仓库中存在该商品
 
+            }else{ //仓库中不存在该商品
 
-        return goodInWareHouseSet;
+            }
+        }
     }
 
 
+    public void updateGoodsToWarehouse(){
+
+    }
 }
