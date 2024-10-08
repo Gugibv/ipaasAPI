@@ -76,7 +76,7 @@ public class PurchaseOrderApicall {
         bodyMapR01.put("query", queryR01);
 
         Map<String, Object> $specialCommandR02 = new HashMap<>();
-        $specialCommandR02.put("$respFields", JSON.toJSONString(Arrays.asList("t_field_jiflrh7rhc", "t_field_uxggln4z")));
+        $specialCommandR02.put("$respFields", JSON.toJSONString(Arrays.asList("t_field_jiflrh7rhc", "t_field_uxggln4z","t_field_jx3jrvapjv")));
 
 
         Map<String, Object> $extendFieldsR01 = new HashMap<>();
@@ -166,28 +166,6 @@ public class PurchaseOrderApicall {
 
     public static void handleGoodsToWarehouse(String goodsInPurchaseOrderString ,String goodsInWarehoseString ){
 
-        JSONObject jsonObject = new JSONObject(goodsInPurchaseOrderString);
-        JSONObject dataObject = jsonObject.getJSONObject("data");
-        JSONArray dataList = dataObject.getJSONArray("dataList");
-
-        HashMap<String,BigDecimal> goodsInpurchaseMap = new HashMap<>();
-        for(int i= 0;i<dataList.length();i++){
-             JSONObject  item = (JSONObject) dataList.get(i);
-            if (item.has("t_field_jiflrh7rhc")) {
-                String productId = item.getString("t_field_jiflrh7rhc");
-                BigDecimal productNum = item.getBigDecimal("t_field_uxggln4z");
-                if(goodsInpurchaseMap.containsKey(productId)){
-                    goodsInpurchaseMap.put(productId,goodsInpurchaseMap.get(productId).add(productNum));
-                }else{
-                    goodsInpurchaseMap.put(productId, productNum);
-                }
-                System.out.println("进货商品ID: " + productId +" 进货数量：" +productNum );
-            } else {
-                System.out.println("t_field_jiflrh7rhc 字段不存在");
-            }
-        }
-        System.out.println("----------------------------------");
-
         HashMap<String,BigDecimal> goodsInWarehouse = new HashMap<>();
         JSONObject jsonObject2 = new JSONObject(goodsInWarehoseString);
         JSONObject dataObject2 = jsonObject2.getJSONObject("data");
@@ -204,13 +182,45 @@ public class PurchaseOrderApicall {
             }
         }
 
-        for(String key: goodsInpurchaseMap.keySet()){
-            if(goodsInWarehouse.containsKey(key)){ // 仓库中存在该商品
+        System.out.println("----------------------------------");
 
-            }else{ //仓库中不存在该商品
+        Map<String,Float> unitVolumeMap = new HashMap<>();
+        HashMap<String,BigDecimal> goodsInPurchaseMap = new HashMap<>();
+        JSONObject jsonObject = new JSONObject(goodsInPurchaseOrderString);
+        JSONObject dataObject = jsonObject.getJSONObject("data");
+        JSONArray dataList = dataObject.getJSONArray("dataList");
+        for(int i= 0;i<dataList.length();i++){
+            JSONObject  item = (JSONObject) dataList.get(i);
+            if (item.has("t_field_jiflrh7rhc")) {
+                String productId = item.getString("t_field_jiflrh7rhc");
+                BigDecimal productNum = item.getBigDecimal("t_field_uxggln4z");
+                Float unitVolume = item.getFloat("t_field_jx3jrvapjv");
+                System.out.println("进货商品ID: " + productId +" 进货数量：" +productNum +" 单位体积："+ unitVolume);
+                unitVolumeMap.put(productId,unitVolume);
+                if(goodsInPurchaseMap.containsKey(productId)){
+                    goodsInPurchaseMap.put(productId,goodsInPurchaseMap.get(productId).add(productNum));
+                }else{
+                    goodsInPurchaseMap.put(productId,productNum);
+                }
+            } else {
+                System.out.println("t_field_jiflrh7rhc 字段不存在");
+            }
+        }
+
+
+        for(String key : goodsInPurchaseMap.keySet()){
+            if(goodsInWarehouse.containsKey(key)){ // 仓库中已经存在改商品
+
+
+
+            }else{
+
 
             }
         }
+
+
+
     }
 
 
