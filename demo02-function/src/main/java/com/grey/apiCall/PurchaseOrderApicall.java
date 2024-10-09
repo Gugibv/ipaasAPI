@@ -33,7 +33,7 @@ public class PurchaseOrderApicall {
 
         warehouseId ="HW6518361";//  入库仓库ID
         String t_item_name ="HW6190950";// 关联京东商品
-        int t_number = 7;//库存数量
+        int t_number = 8;//库存数量
         String unitVolume ="0.5";// 单位体积
 
         updateGoodsToWarehouse(warehouseId,t_item_name,t_number,unitVolume);
@@ -234,50 +234,50 @@ public class PurchaseOrderApicall {
         // 兑换token
         String ipaasAccessToken = IpaasAccessToken.getToken(httpClient);
 
-        // 根据ID新增或更新数据(直接入库)
-        String saveOrUpdateOneBatchDirect = "https://apaas-openapi-web.clickpaas.com/api/open/v3/t_object_y7w6twi0/saveOrUpdateBatch/direct";
+        // 根据条件新增/更新数据，如果根据条件过滤出多条数据，会返回错误信息
+        String saveOrUpdateOneBatch = "https://apaas-openapi-web.clickpaas.com/api/open/v3/t_object_y7w6twi0/saveOrUpdateBatch";
 
         // 构建请求体(批量新增/更新)
-        List<Map<String, Object>> saveOrUpdateDataListW04 = new ArrayList<>();
-        Map<String, Object> saveOrUpdateDataW04 = new HashMap<>();
+        List<Map<String, Object>> saveOrUpdateDataListW02 = new ArrayList<>();
+        Map<String, Object> saveOrUpdateDataW02 = new HashMap<>();
 
         // 构建查询条件
-        Map<String, Object> queryW04 = new HashMap<>();
-        System.out.println("warehouseId:"+ warehouseId +" t_item_name:"+t_item_name);
-        queryW04.put("t_treewarehouse", warehouseId); // 入库仓库ID
-        queryW04.put("t_item_name", t_item_name); // 商品ID
+        Map<String, Object> queryW02 = new HashMap<>();
+        queryW02.put("t_treewarehouse",warehouseId);
+        queryW02.put("t_item_name", t_item_name);
 
         // 构建更新条件
-        Map<String, Object> updateW04 = new HashMap<>();
-        updateW04.put("t_item_name", t_item_name);
-        updateW04.put("t_treewarehouse",warehouseId);
-        updateW04.put("t_number", t_number);
-        updateW04.put("t_sumnumber", t_sumnumber);
-        updateW04.put("t_field_mtcfzpugav", unitVolume);
+        Map<String, Object> updateW02 = new HashMap<>();
+        updateW02.put("t_treewarehouse", warehouseId);
+        updateW02.put("t_item_name", t_item_name);
+        updateW02.put("t_number", t_number);
+        updateW02.put("t_sumnumber", t_sumnumber);
+        updateW02.put("t_field_mtcfzpugav", unitVolume);
 
-        saveOrUpdateDataW04.put("query", queryW04);
-        saveOrUpdateDataW04.put("update", updateW04);
-        saveOrUpdateDataListW04.add(saveOrUpdateDataW04);
+        saveOrUpdateDataW02.put("query", queryW02);
+        saveOrUpdateDataW02.put("update", updateW02);
+        saveOrUpdateDataListW02.add(saveOrUpdateDataW02);
 
-        Map<String, Object> bodyMapW04 = new HashMap<>();
-        bodyMapW04.put("payload", saveOrUpdateDataListW04);
+        Map<String, Object> bodyMapW02 = new HashMap<>();
+        bodyMapW02.put("payload", saveOrUpdateDataListW02);
 
-        HttpPost requestW04 = new HttpPost(saveOrUpdateOneBatchDirect);
-        requestW04.setEntity(new StringEntity(JSON.toJSONString(bodyMapW04), "UTF-8"));
-        requestW04.setHeader("Content-Type", "application/json");
-        requestW04.setHeader("Ipaas-Access-Token", ipaasAccessToken);
-        requestW04.setHeader("sandBoxId", "");
+        HttpPost requestW02 = new HttpPost(saveOrUpdateOneBatch);
+        requestW02.setEntity(new StringEntity(JSON.toJSONString(bodyMapW02), "UTF-8"));
+        requestW02.setHeader("Content-Type", "application/json");
+        requestW02.setHeader("Ipaas-Access-Token", ipaasAccessToken);
+        requestW02.setHeader("sandBoxId", "");
 
         try {
-            CloseableHttpResponse respW04 = httpClient.execute(requestW04);
-            HttpEntity entityW04 = respW04.getEntity();
-            if (entityW04 != null) {
-                String resultW04 = EntityUtils.toString(entityW04);
-                EntityUtils.consume(respW04.getEntity());
-                System.out.println(resultW04);
+            CloseableHttpResponse respW02 = httpClient.execute(requestW02);
+            HttpEntity entityW02 = respW02.getEntity();
+            if (entityW02 != null) {
+                String resultW02 = EntityUtils.toString(entityW02);
+                EntityUtils.consume(respW02.getEntity());
+                System.out.println(resultW02);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
