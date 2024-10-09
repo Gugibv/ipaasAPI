@@ -23,7 +23,7 @@ import java.util.*;
 
 public class PurchaseOrderApicall {
     public static void main(String[] args) {
-        String ID = "HW6954990"; //进货单ID
+        String ID = "HW8468143"; //进货单ID
         processPurchaseOrder(ID);
     }
 
