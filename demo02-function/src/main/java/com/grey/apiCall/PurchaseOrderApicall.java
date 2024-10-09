@@ -23,21 +23,22 @@ import java.util.*;
 
 public class PurchaseOrderApicall {
     public static void main(String[] args) {
-
         String ID = "HW6954990"; //进货单ID
-
-        String warehouseId =  getWarehouseIdByPurchaseOrderId(ID); // 从进货单中得到相关仓库ID
-        String goodsInPurchaseOrderString = getGoodsListByPurchaseOrderId(ID); // 根据进货单ID从商品-进货单中间表获取商品列表
-        String goodsInWarehoseString = getGoodListByWarehouseId(warehouseId); // 根据相关仓库ID从商品-仓库中间表获取商品列表
-        handleGoodsToWarehouse(goodsInPurchaseOrderString,goodsInWarehoseString); // 商品入库
-
-        warehouseId ="HW6518361";//  入库仓库ID
-        String t_item_name ="HW6190950";// 关联京东商品
-        int t_number = 8;//库存数量
-        String unitVolume ="0.5";// 单位体积
-
-        updateGoodsToWarehouse(warehouseId,t_item_name,t_number,unitVolume);
+        processPurchaseOrder(ID);
     }
+
+    /**
+     * 进货单商品入库
+     * @param purchaseOrderId 进货单ID
+     */
+    public static void processPurchaseOrder(String purchaseOrderId){
+
+        String warehouseId =  getWarehouseIdByPurchaseOrderId(purchaseOrderId); // 从进货单中得到相关仓库ID
+        String goodsInPurchaseOrderString = getGoodsListByPurchaseOrderId(purchaseOrderId); // 根据进货单ID从商品-进货单中间表获取商品列表
+        String goodsInWarehoseString = getGoodListByWarehouseId(warehouseId); // 根据相关仓库ID从商品-仓库中间表获取商品列表
+        handleGoodsToWarehouse(warehouseId, goodsInPurchaseOrderString,goodsInWarehoseString); // 商品入库
+    }
+
 
     /**
      * 根据进货单ID获取入库仓库
@@ -164,7 +165,7 @@ public class PurchaseOrderApicall {
     }
 
 
-    public static void handleGoodsToWarehouse(String goodsInPurchaseOrderString ,String goodsInWarehoseString ){
+    public static void handleGoodsToWarehouse(String warehouseId ,String goodsInPurchaseOrderString ,String goodsInWarehoseString ){
 
         HashMap<String,BigDecimal> goodsInWarehouse = new HashMap<>();
         JSONObject jsonObject2 = new JSONObject(goodsInWarehoseString);
@@ -207,20 +208,13 @@ public class PurchaseOrderApicall {
             }
         }
 
-
         for(String key : goodsInPurchaseMap.keySet()){
-            if(goodsInWarehouse.containsKey(key)){ // 仓库中已经存在改商品
-
-
-
-            }else{
-
-
-            }
+              if(goodsInWarehouse.containsKey(key)){
+                  updateGoodsToWarehouse(warehouseId , key, goodsInPurchaseMap.get(key).add(goodsInWarehouse.get(key)).intValue(),unitVolumeMap.get(key).toString());
+              }else{
+                  updateGoodsToWarehouse(warehouseId , key, goodsInPurchaseMap.get(key).intValue(),unitVolumeMap.get(key).toString());
+              }
         }
-
-
-
     }
 
 
