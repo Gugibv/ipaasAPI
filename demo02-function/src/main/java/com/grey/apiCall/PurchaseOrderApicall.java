@@ -33,7 +33,7 @@ public class PurchaseOrderApicall {
 
         warehouseId ="HW6518361";//  入库仓库ID
         String t_item_name ="HW6190950";// 关联京东商品
-        int t_number = 5;//库存数量
+        int t_number = 7;//库存数量
         String unitVolume ="0.5";// 单位体积
 
         updateGoodsToWarehouse(warehouseId,t_item_name,t_number,unitVolume);
@@ -243,7 +243,8 @@ public class PurchaseOrderApicall {
 
         // 构建查询条件
         Map<String, Object> queryW04 = new HashMap<>();
-        queryW04.put("warehouseId", warehouseId); // 入库仓库ID
+        System.out.println("warehouseId:"+ warehouseId +" t_item_name:"+t_item_name);
+        queryW04.put("t_treewarehouse", warehouseId); // 入库仓库ID
         queryW04.put("t_item_name", t_item_name); // 商品ID
 
         // 构建更新条件
